@@ -35,14 +35,14 @@ module.exports = {
          routerSchemaLoader(app)
          console.log('[start]...routerSchema loaded', app.routerSchema)
 
-         controllerLoader(app)
-         console.log('[start]...controller loaded', app.controller)
-
          serviceLoader(app)
-         console.log('[start]...service loaded', app.service)
+         console.log('[start]...service loaded')
 
          configLoader(app)
-         console.log('[start]...config loaded', app.config)
+         console.log('[start]...config loaded')
+
+         controllerLoader(app)
+         console.log('[start]...controller loaded')
 
          extendLoader(app)
          console.log('[start]...extend loaded', app.extend)

@@ -19,9 +19,9 @@ module.exports = (app) => {
       let name = path.resolve(file)
       // 截取 middleware 以下的 xxx/xxx.js
       // /app/middleware/xxx/A.js' => xxx/A.js'
-      name = name.substring(name.lastIndexOf(`${sep}middleware`) + `${sep}middleware`.length, name.length)
+      name = name.split(`middleware${sep}`)[1].replace('.js', '')
       // 把 xxx-xxx 改驼峰。a-a/aaa.js => aA.aaa.js
-      name = name.replace(/[_-][a-z]/ig, (s) => s.substring(1).toUpperCase()).replace('.js', '')
+      name = name.replace(/[_-][a-z]/ig, (s) => s.substring(1).toUpperCase())
 
       let tempMiddleware = middleware
       const names = name.split(sep);
@@ -31,6 +31,7 @@ module.exports = (app) => {
          // 3.A[B][C][D] => 4.A.B.C.D = reuqire(A/B/C/D.js)
          if(i === names.length - 1) {
             tempMiddleware[names[i]] = require(path.resolve(file))(app)
+
          } else {
             // 如果不是最后一位。
             // 1. A[B] = {} =>  2.A[B][C]
@@ -41,9 +42,8 @@ module.exports = (app) => {
             tempMiddleware = tempMiddleware[names[i]]
          }
       }
-      console.log('tempMiddleware....', tempMiddleware)
    });
 
    app.$middleware = middleware
-   console.log('✅ 中间件加载完成:', Object.keys(app.middleware))
+   console.log('✅ 中间件加载完成:', Object.keys(app.$middleware))
 }

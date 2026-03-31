@@ -1,5 +1,6 @@
 module.exports = (app) => {
-   return class projectService {
+   const BaseService = require('./base-service')(app)
+   return class ProjectService extends BaseService {
       getList() {
          return [{
             name: 'projectA',

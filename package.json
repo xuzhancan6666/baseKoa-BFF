@@ -18,7 +18,6 @@
     "lint": "eslint --ext .js,.vue src/",
     "lint:fix": "eslint --ext .js,.vue src/ --fix",
     "lint:check": "eslint --ext .js,.vue .",
-
     "dev": "_ENV='local' nodemon index.js",
     "beta": "_ENV='beta' nodemon index.js",
     "pro": "_ENV='pro' nodemon index.js"
@@ -43,6 +42,7 @@
     "less": "^3.8.1",
     "lodash": "^4.17.21",
     "log4js": "^6.9.1",
+    "md5": "^2.3.0",
     "moment": "^2.29.4",
     "mysql": "^2.18.1",
     "node-schedule": "^2.1.1",
@@ -52,7 +52,8 @@
     "vue": "^3.3.4",
     "vue-json-viewer": "^3.0.4",
     "vue-router": "^4.2.4",
-    "vuex": "^4.1.0"
+    "vuex": "^4.1.0",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.1.0",

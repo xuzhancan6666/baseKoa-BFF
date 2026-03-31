@@ -32,9 +32,9 @@ module.exports = (app) => {
       let name = path.resolve(file)
       // 截取 extend 以下的 xxx/xxx.js
       // /app/extend/xxx/A.js' => xxx/A.js'
-      name = name.substring(name.lastIndexOf(`${sep}extend`) + `${sep}extend`.length, name.length)
+      name = name.split(`extend${sep}`)[1].replace('.js', '')
       // 把 xxx-xxx 改驼峰。a-a/aaa.js => aA.aaa.js
-      name = name.replace(/[_-][a-z]/ig, (s) => s.substring(1).toUpperCase()).replace('.js', '')
+      name = name.replace(/[_-][a-z]/ig, (s) => s.substring(1).toUpperCase())
 
       for(let key in app) {
          if(key === name) {
@@ -42,9 +42,7 @@ module.exports = (app) => {
          }
       }
 
-      app.name = require(path.resolve(file))(app)
-
-      console.log('tempExtend....', tempExtend)
+      app[name] = require(path.resolve(file))(app)
    });
 
    app.extend = extend

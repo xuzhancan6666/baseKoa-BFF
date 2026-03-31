@@ -31,7 +31,6 @@ module.exports = (app) => {
       let name = path.resolve(file)
       // 截取 service 以下的 xxx/xxx.js
       // /app/service/xxx/A.js' => xxx/A.js
-      console.log('name1...', name)
 
       name = name.split(`service${sep}`)[1].replace('.js', '')
       // 把 xxx-xxx 改驼峰。a-a/aaa.js => aA.aaa.js
@@ -39,7 +38,6 @@ module.exports = (app) => {
 
       let tempService = service
       const names = name.split(sep);
-            console.log('name2...', names)
 
       for(let i = 0; i < names.length; i++) {
          // 如果最后一位。就是文件名。
@@ -58,7 +56,6 @@ module.exports = (app) => {
             tempService = tempService[names[i]]
          }
       }
-      console.log('tempService....', tempService)
    });
 
    app.service = service
