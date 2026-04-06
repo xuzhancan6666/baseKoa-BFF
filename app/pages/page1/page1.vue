@@ -33,7 +33,6 @@
          timeout: 60000,
          errorMessages: '网络异常'
       })
-      console.log('.......', res)
       data.value = res.data
    }
 
