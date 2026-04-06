@@ -4,8 +4,13 @@ module.exports = (app) => {
       getList() {
          return [{
             name: 'projectA',
+            id: 'A'
          }, {
-            name: 'projectB'
+            name: 'projectB',
+            id: 'B'
+         }, {
+            name: 'projectC',
+            id: 'C'
          }]
       }
    }

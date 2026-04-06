@@ -89,6 +89,7 @@ module.exports = {
       extensions: ['.js', '.vue', '.less', '.css'],
       alias: {
          $pages: path.resolve(process.cwd(), './app/pages'),
+         $boot: path.resolve(process.cwd(), './app/pages/boot'),
          $common: path.resolve(process.cwd(), './app/pages/common'),
          $widget: path.resolve(process.cwd(), './app/pages/widget'),
          $store: path.resolve(process.cwd(), './app/pages/store')
@@ -103,7 +104,9 @@ module.exports = {
       // 把第三方库暴露到 window context 下
       // 它会自动在该模块的顶部添加 import Vue from 'vue'（或 require('vue')）
       new webpack.ProvidePlugin({
-         Vue: 'vue'
+         Vue: 'vue',
+         axios: 'axios',
+         __loadash: 'loadash'
       }),
       // 定义全局常量
       new webpack.DefinePlugin({

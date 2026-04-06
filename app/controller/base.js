@@ -15,7 +15,7 @@ module.exports = (app) => class BaseConfroller {
    success(ctx, data = {}, metadata = {}) {
       ctx.status = 200
       ctx.body = {
-         sucess: true,
+         success: true,
          data,
          metadata
       }
@@ -28,7 +28,7 @@ module.exports = (app) => class BaseConfroller {
    fail(ctx, message, code) {
       ctx.status = 200
       ctx.body = {
-         sucess: false,
+         success: false,
          message,
          code,
       }

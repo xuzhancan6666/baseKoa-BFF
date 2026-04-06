@@ -9,7 +9,7 @@ module.exports = (app) => {
         return schema.parse(data);
       } catch (error) {
         if (error instanceof ZodError) {
-          ctx.status = 400;
+          ctx.status = 442;
           ctx.body = {
             success: false,
             message: '参数验证失败',

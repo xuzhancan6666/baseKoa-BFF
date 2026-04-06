@@ -1,6 +1,6 @@
 <template>
    <h1>page2</h1>
-   <input v-model="content">
+   <el-input v-model="content"></el-input>
    <span>{{ content }}</span>
 </template>
 <script setup>
@@ -13,6 +13,6 @@
 </script>
 <style lang="less" scoped>
 h1 {
-   color: red;
+   color: blue;
 }
 </style>
