@@ -66,6 +66,7 @@ const curl = ({
          metadata,
       })
    }).catch((error) => {
+      console.log('error', error)
       const {message} = error;
       // 对于程序 错误。 处理一层
       if(message.match(/timeout/)) {

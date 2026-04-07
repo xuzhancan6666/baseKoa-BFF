@@ -22,6 +22,8 @@ glob.sync(enrtyPath).forEach((file) => {
    HtmlWebpackPluginArray.push(
       new HtmlWebpackPlugin({
          // 产物 （最终模版）：输出路径
+         // vue目标入口文件/app/pages/**/entry.*.js。
+         // 结合/app/view/entry.tpl 模版。生成最终的模版文件。 entry.page1.tpl
          filename: path.resolve(process.cwd(), './app/public/dist/', `${entryName}.tpl`),
          template: path.resolve(process.cwd(), './app/view/entry.tpl'),
          chunks: [entryName]
