@@ -24,6 +24,7 @@ module.exports = (app) => {
       enableTypes: ['form', 'json', 'text']
    }))
 
+   // 需按顺序 use 进去
    // 异常捕获中间件
    app.use(app.$middleware.errorHandler)
 

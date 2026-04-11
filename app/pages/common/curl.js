@@ -31,7 +31,7 @@ const curl = ({
          s_sign: sSign
       }
    }
-
+   console.log('123', axoisSetting)
    return axios.request(axoisSetting).then((response) => {
       // body: { success: true, data, metadata }
       const resData = response.data || {}

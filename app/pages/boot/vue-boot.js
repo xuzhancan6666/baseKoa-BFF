@@ -2,6 +2,7 @@ import { createApp } from "vue";
 // ElmentUI
 import ElmentUI from 'element-plus';
 import 'element-plus/theme-chalk/index.css';
+import 'element-plus/theme-chalk/dark/css-vars.css'
 import pinia from "$store/index.js";
 import { createRouter, createWebHashHistory } from 'vue-router'
 import '$pages/assets/custom.css'

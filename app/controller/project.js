@@ -12,20 +12,21 @@ module.exports = (app) => {
       }
 
       async getListByPost(ctx) {
-         console.log(7777777777777, ctx)
          const {project: projectService} = this.service
-         // 用zod 生成 schema
-         const listSchema = z.object({
-            page: z.number(),
-            pagenum: z.number()
-         })
-         // 通过我们中间件。给ctx挂载的vildateMethod 进行 ctx 的数据校验
-         const validate = ctx.validateBody(listSchema, ctx)
-         console.log('validate....', validate)
-         if(!validate) {
-            return
-         }
+         // // 用zod 生成 schema
+         // const listSchema = z.object({
+         //    page: z.number(),
+         //    pagenum: z.number()
+         // })
+         // // 通过我们中间件。给ctx挂载的vildateMethod 进行 ctx 的数据校验
+         // const validate = ctx.validateBody(listSchema, ctx)
+
+         // if(!validate) {
+         //    return
+         // }
+
          const res = projectService.getList()
+
          this.success(ctx, res, {})
       }
    }

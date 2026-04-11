@@ -25,8 +25,8 @@ module.exports = (app) => {
       ctx.status = 302 // 临时重定向
       ctx.redirect(`${app?.options?.homePage || '/'}`)
    })
-   // 注册到 app 上
 
+   // 注册到 app 上
    app.use(router.routes())
    app.use(router.allowedMethods())
 }

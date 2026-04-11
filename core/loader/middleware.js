@@ -5,12 +5,10 @@ const { sep } = path
 module.exports = (app) => {
    // 读取 app/middleware/xxx/xxx.js
    const filePath = path.resolve(app.businessPath, 'middleware')
-   console.log('🔍 正在扫描中间件目录:', filePath)
 
 
    // 解析出来的为 ['/app/middleware/xxx/A.js', '/app/middleware/xxx/B.js']
    const fileList = glob.sync(path.resolve(filePath, `.${sep}**${sep}**.js`))
-   console.log('📋 找到的中间件文件:', fileList)
 
    // 遍历文件夹所有js。内容加载到 app.middelware 上
    const middleware = {}

@@ -13,17 +13,14 @@ const { sep } = path
 module.exports = (app) => {
    // 读取 app/extend/xxx/xxx.js
    const filePath = path.resolve(app.businessPath, 'extend')
-   console.log('🔍 正在扫描extend目录:', filePath)
    // 检查目录是否存在
    if (!require('fs').existsSync(filePath)) {
-     console.log('📁 extend目录不存在:', filePath)
      app.extend = {}
      return
    }
 
    // 解析出来的为 ['/app/extend/A.js', '/app/extend/B.js']
    const fileList = glob.sync(path.join(filePath, '**', '*.js'))
-   console.log('📋 找到的extend文件:', fileList)
 
    // 遍历文件夹所有js。内容加载到 app.middelware 上
    const extend = {}

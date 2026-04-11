@@ -2,16 +2,16 @@ module.exports = {
    name: '淘宝',
    desc: '淘宝电商系统',
    homePage: '',
-   mune: [{
+   menu: [{
       key: 'order',
-      muneType: 'iframe',
+      menuType: 'iframe',
       iframeConfig: {
          path: 'http://www.baidu.com'
       }
    }, {
       key: 'operation',
       name: '运营活动',
-      muneType: 'module',
+      menuType: 'module',
       moduleType: 'sider',
       customConfig: {
          path: '/todo'

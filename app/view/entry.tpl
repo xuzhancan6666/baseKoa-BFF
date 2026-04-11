@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class=dark>
 <head>
     <title>{{name}}</title>
     <link href="/static/normalize.css" rel="stylesheet"></link>

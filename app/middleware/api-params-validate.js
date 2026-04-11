@@ -1,23 +1,18 @@
 const { ZodError } = require('zod');
-
+const { z } = require('zod');
 module.exports = (app) => {
   return async (ctx, next) => {
     // 为 ctx 添加验证方法
     ctx.validate = function(schema, data, options = {}) {
       try {
-        app.logger.info('--[validate schema]--data:', data)
+        app.logger.info('--[validate schema]--data:', data, schema.parse(data))
         return schema.parse(data);
       } catch (error) {
-        if (error instanceof ZodError) {
-          ctx.status = 442;
-          ctx.body = {
-            success: false,
-            message: '参数验证失败',
-            error: error
-          };
-          return null;
-        }
-        throw error;
+         const err = new Error('参数验证失败');
+         err.status = 442;
+         err.message = '参数验证失败';
+         err.details = error;
+         throw err;
       }
     };
 
@@ -27,6 +22,7 @@ module.exports = (app) => {
     };
 
     ctx.validateQuery = function(schema) {
+      console.log('--[validateQuery schema]--query:', ctx.query)
       return ctx.validate(schema, ctx.query);
     };
 
@@ -34,6 +30,28 @@ module.exports = (app) => {
       return ctx.validate(schema, ctx.params);
     };
 
-    await next();
-  };
-};
+    const { method: method, url: url } = ctx.request
+    const schema = app.routerSchema;
+    const currentSchemaList = schema[url] ? schema[url][method.toLowerCase()] : []
+
+    if(Array.isArray(currentSchemaList) && currentSchemaList.length > 0) {
+      for(let i = 0; i < currentSchemaList.length; i++) {
+         const item = currentSchemaList[i]
+
+         switch(item.type) {
+            case 'data':
+               ctx.validateBody(item.schema)
+               break
+            case 'query':
+               ctx.validateQuery(item.schema)
+               break
+            case 'params':
+               ctx.validateParams(item.schema)
+               break
+         }
+      }
+   };
+
+   await next();
+  }
+}

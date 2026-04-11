@@ -19,7 +19,7 @@ module.exports = (app) => {
       const signKey = 'locking';
       // 加密 密钥+时间
       const signature = md5(`${signKey}_${st}`)
-      app.logger.info(`${method}-${path} signature: ${signature}`, sSign)
+      app.logger.info(`${method}-${path} st: ${st} signature: ${signature}`, sSign)
 
       // 用户有签名。 用户有传输时间。
       // 用户签名 和 上面生成的 signature 相等

@@ -3,6 +3,7 @@
    <el-input v-model="content"></el-input>
    <span>{{ content }}</span>
    <el-button type="primary" @click="tableList">查询</el-button>
+   <el-button type="primary" @click="getDsl">获取DSL</el-button>
    <el-table :data="data">
      <el-table-column label="id" prop="id"></el-table-column>
      <el-table-column label="name" prop="name"></el-table-column>
@@ -16,7 +17,7 @@
    const data = ref([])
 
    onMounted(async() => {
-      tableList()
+      getDsl()
    })
 
    const f = (w) => {
@@ -75,7 +76,7 @@
          headers: {},
          query: {},
          data: {
-            page: 1,
+            page: 'ADD',
             pagenum: 2
          },
          responseType: 'json',
@@ -84,6 +85,23 @@
       })
       data.value = res.data
    }
+
+   const getDsl = async() => {
+      const res =  await curl({
+         url: '/api/get/dslTemplate',
+         method: 'get',
+         headers: {},
+         query: {
+            dslType: 'pdd'
+         },
+         data: {},
+         responseType: 'json',
+         timeout: 60000,
+         errorMessages: '网络异常'
+      })
+      data.value = res.data
+   }
+
 
 </script>
 <style lang="less" scoped>

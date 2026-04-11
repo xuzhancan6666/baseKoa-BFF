@@ -5,12 +5,12 @@ module.exports = {
    menu: [{
       key: 'traffic',
       name: '流量管理',
-      muneType: 'module',
+      menuType: 'module',
       moduleType: 'sider',
       siderConfig: {
          key: 'user-traffic',
          name: '用户流量',
-         muneType: 'module',
+         menuType: 'module',
          moduleType: 'custom',
          customConfig: {
             path: '/todo'

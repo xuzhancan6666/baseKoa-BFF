@@ -4,7 +4,7 @@ module.exports = {
    menu: [{
       key: 'video',
       name: '视频管理',
-      muneType: 'module',
+      menuType: 'module',
       moduleType: 'custom',
       customConfig: {
          path: '/todo'
@@ -12,7 +12,7 @@ module.exports = {
    },{
       key: 'user',
       name: '用户管理',
-      muneType: 'module',
+      menuType: 'module',
       moduleType: 'custom',
       customConfig: {
          path: '/todo'

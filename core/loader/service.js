@@ -12,17 +12,14 @@ const {sep} = path
 module.exports = (app) => {
    // 读取 app/service/xxx/xxx.js
    const filePath = path.resolve(app.businessPath, 'service')
-   console.log('🔍 正在扫描service目录:', filePath)
    // 检查目录是否存在
    if (!require('fs').existsSync(filePath)) {
-     console.log('📁 service目录不存在:', filePath)
      app.service = {}
      return
    }
 
    // 解析出来的为 ['/app/service/xxx/A.js', '/app/service/xxx/B.js']
    const fileList = glob.sync(path.join(filePath, '**', '*.js'))
-   console.log('📋 找到的service文件:', fileList)
 
    // 遍历文件夹所有js。内容加载到 app.middelware 上
    const service = {}

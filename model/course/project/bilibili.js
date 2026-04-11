@@ -8,13 +8,13 @@ module.exports = {
       }, {
          key: 'class-resource',
          name: '课程资料',
-         muneType: 'module',
+         menuType: 'module',
          moduleType: 'sider',
          siderConfig: {
             menu: [{
                key: 'pdf',
                name: 'PDF',
-               muneType: 'module',
+               menuType: 'module',
                moduleType: 'custom',
                customConfig: {
                   path: '/todo'
@@ -22,7 +22,7 @@ module.exports = {
             }, {
                key: 'ppt',
                name: 'PPT',
-               muneType: 'module',
+               menuType: 'module',
                moduleType: 'custom',
                customConfig: {
                   path: '/todo'
@@ -30,7 +30,7 @@ module.exports = {
             }, {
                key: 'excel',
                name: 'EXCEL',
-               muneType: 'module',
+               menuType: 'module',
                moduleType: 'custom',
                customConfig: {
                   path: '/todo'
